@@ -1,4 +1,18 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
+=======
+# Repositorio base del Curso de Introducción a React.js en Platzi
+
+¡Hola, Platzinauta!
+
+En este repositorio encontrarás el código de todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+
+La rama principal contiene el código con el que eempezamos el curso. En las demás ramas encontrarás el código de las siguientes clases y finalmente el deploy de la aplicación.
+
+¡Mucha suerte aprendiendo React! #NuncaParesDeAprender
+
+## Getting Started with Create React App
+>>>>>>> b024ff9804587eb2cd61637a4e53c91abf2d6216
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -14,11 +28,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+<<<<<<< HEAD
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+=======
+>>>>>>> b024ff9804587eb2cd61637a4e53c91abf2d6216
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
