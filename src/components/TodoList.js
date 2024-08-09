@@ -5,25 +5,14 @@ function TodoList({children, completed, items}) {
   if(completed){
     className = 'completed';
     text = "Completed";
-    itemsLength = items.filter((todo)=>{
-      if(todo.completed){
-        return todo;
-      }
-      return false;
-    }
-    ).length;
+    itemsLength = items.filter((todo)=> todo.completed).length;
   }else{
     text = "ToDo Tasks";
-    itemsLength = items.filter((todo)=>{
-      if(!todo.completed){
-        return todo;
-      }
-      return false;
-    }
-    ).length;
+    itemsLength = items.filter((todo)=> !todo.completed).length;
   }
   if((itemsLength>0)){
-    return (<div>
+    return (
+    <div>
       <span>{text}</span>
       <ul className={className}>
         {children}

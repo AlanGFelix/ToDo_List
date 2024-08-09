@@ -1,5 +1,5 @@
 
-function CreateTodoModal({items, setTodoItems}){
+function CreateTodoModal({items, setTodoItems, actualizaLocalStorage}){
 
   return (
     <div className="CreateTodoBack invisible">
@@ -27,12 +27,13 @@ function CreateTodoModal({items, setTodoItems}){
               let modal = document.querySelector('.CreateTodoBack');
 
               if(nombreTodo !== ''){
-                let nuevosItems = items.map((todo)=>(todo));
+                let nuevosItems = [...items];
 
                 nuevosItems.push({text:nombreTodo.value,completed:false});
                 modal.classList.add('invisible');
                 nombreTodo.value = '';
                 setTodoItems(nuevosItems);
+                actualizaLocalStorage(nuevosItems);
               }
             }}
           >Crear ToDo</button>

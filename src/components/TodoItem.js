@@ -1,6 +1,6 @@
 import {AiOutlineCheck, AiOutlineDelete} from 'react-icons/ai';
 
-function TodoItem({items, setTodoItems,text, completed}){
+function TodoItem({items, setTodoItems,text, completed, actualizaLocalStorage}){
   let icon;
   if (completed) {
     icon = <AiOutlineCheck
@@ -28,22 +28,24 @@ function TodoItem({items, setTodoItems,text, completed}){
       <span
       className="check-button"
       onClick={(event)=>{
-          let todoElegido = event.target.parentNode.parentNode.children[1].innerText;
+          let todoElegido;
+          if(event.target.tagName === 'svg') {
+            todoElegido = event.target.parentNode.parentNode.children[1].innerText;
+          } else if(event.target.tagName === 'path') {
+            todoElegido = event.target.parentNode.parentNode.parentNode.children[1].innerText;
+          } else {
+            todoElegido = event.target.parentNode.children[1].innerText;
+          }
 
           let todos = items.map((todo)=>{
             if(todo.text === todoElegido){
-              if(completed){
-                todo.completed = false;
-              }else{
-                todo.completed = true;
-              }
-              return todo;
-            }else{
-              return todo;
+              todo.completed = !todo.completed;
             }
+            return todo;
           });
 
           setTodoItems(todos);
+          actualizaLocalStorage(todos);
         }
       }
       >{icon}</span>
@@ -51,16 +53,11 @@ function TodoItem({items, setTodoItems,text, completed}){
       <span
         className="delete-button"
         onClick={(event)=>{
-          let todoElegido = event.target.parentNode.parentNode.children[1].innerText;
+            let todoElegido = event.target.parentNode.parentNode.children[1].innerText;
 
-          let todos = items.filter((todo)=>{
-            if(todo.text === todoElegido){
-              return false;
-            }else{
-              return todo;
-            }
-          });
-          setTodoItems(todos);
+            let todos = items.filter(todo => todo.text !== todoElegido);
+            setTodoItems(todos);
+            actualizaLocalStorage(todos);
           }
         }
       ><AiOutlineDelete/></span>
