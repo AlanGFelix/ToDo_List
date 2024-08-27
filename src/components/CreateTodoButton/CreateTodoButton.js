@@ -8,7 +8,7 @@ function CreateTodoButton() {
     <button 
       type="button"
       onClick={()=>{
-          setOpenModal(true);
+          setOpenModal(state => !state);
         }
       }
       >

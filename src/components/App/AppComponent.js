@@ -42,7 +42,7 @@ function AppComponent() {
       </TodoList>
       
       <CreateTodoButton/>
-      { openModal ? <TodoModal><p>Hola pibes</p></TodoModal> : null }
+      { openModal ? <TodoModal></TodoModal> : null }
     </>
   )
 }

@@ -18,6 +18,19 @@ function TodoProvider({ children }) {
     return nombreItem.includes(searchValue);
     });
 
+    const createTodo = () => {
+        let nombreTodo = document.querySelector('#nombreTodo');
+
+        if(nombreTodo.value !== ''){
+            let nuevosItems = [...todoItems];
+
+            nuevosItems.push({text:nombreTodo.value,completed:false});
+            nombreTodo.value = '';
+            setTodoItems(nuevosItems);
+            setOpenModal(state => !state)
+        }
+    }
+
     const checkTodo = (event) => {
         let todoElegido;
         if(event.target.tagName === 'svg') {
@@ -47,7 +60,7 @@ function TodoProvider({ children }) {
 
     return (
         <TodoContext.Provider value={{
-            loading, error, todoItems, setTodoItems, setSearchValue, searchedTodo, checkTodo, deleteTodo, openModal, setOpenModal
+            loading, error, todoItems, setTodoItems, setSearchValue, searchedTodo, checkTodo, deleteTodo, openModal, setOpenModal, createTodo
         }}>
             { children }
         </TodoContext.Provider>
