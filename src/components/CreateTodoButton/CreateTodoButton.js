@@ -1,9 +1,7 @@
 import React from 'react';
 import {AiOutlinePlus} from 'react-icons/ai';
-import { TodoContext } from '../TodoContext/TodoContext';
 
-function CreateTodoButton() {
-  const { setOpenModal } = React.useContext(TodoContext);
+function CreateTodoButton({ setOpenModal }) {
   return (
     <button 
       type="button"

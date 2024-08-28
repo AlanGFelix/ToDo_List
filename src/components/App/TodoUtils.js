@@ -2,9 +2,7 @@ import { useLocalStorage } from './UseLocalStorage';
 import { TodoItem } from '../TodoItem/TodoItem';
 import React from 'react';
 
-const TodoContext = React.createContext();
-
-function TodoProvider({ children }) {
+function TodoUtils() {
     const {
     items: todoItems,
     saveItem: setTodoItems,
@@ -88,23 +86,19 @@ function TodoProvider({ children }) {
     const amountAvailable = searchedTodo.filter( todo => !todo.completed ).length;
     const amountCompleted = searchedTodo.filter( todo => todo.completed ).length;
 
-    return (
-        <TodoContext.Provider value={{
-            loading,
-            error,
-            openModal,
-            todoItems,
-            setSearchValue,
-            amountAvailable,
-            amountCompleted,
-            availableTodos,
-            completedTodos,
-            createTodo,
-            setOpenModal
-        }}>
-            { children }
-        </TodoContext.Provider>
-    );
+    return {
+        loading,
+        error,
+        openModal,
+        todoItems,
+        setSearchValue,
+        amountAvailable,
+        amountCompleted,
+        availableTodos,
+        completedTodos,
+        createTodo,
+        setOpenModal
+    };
 }
 
-export { TodoContext, TodoProvider };
+export { TodoUtils };
