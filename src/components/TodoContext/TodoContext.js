@@ -1,4 +1,5 @@
 import { useLocalStorage } from './UseLocalStorage';
+import { TodoItem } from '../TodoItem/TodoItem';
 import React from 'react';
 
 const TodoContext = React.createContext();
@@ -58,9 +59,48 @@ function TodoProvider({ children }) {
         setTodoItems(todos);
     }
 
+    const completedTodos = searchedTodo.map((todo) => {
+    if(todo.completed) {
+        return <TodoItem
+        key = {todo.text}
+        text = {todo.text}
+        completed = {todo.completed}
+        checkTodo = {checkTodo}
+        deleteTodo = {deleteTodo}
+        />;
+    }
+    return false;
+    });
+
+    const availableTodos = searchedTodo.map((todo) => {
+    if(!todo.completed) {
+        return <TodoItem
+        key = {todo.text}
+        text = {todo.text}
+        completed = {todo.completed}
+        checkTodo = {checkTodo}
+        deleteTodo = {deleteTodo}
+        />;
+    }
+    return false;
+    });
+
+    const amountAvailable = searchedTodo.filter( todo => !todo.completed ).length;
+    const amountCompleted = searchedTodo.filter( todo => todo.completed ).length;
+
     return (
         <TodoContext.Provider value={{
-            loading, error, todoItems, setTodoItems, setSearchValue, searchedTodo, checkTodo, deleteTodo, openModal, setOpenModal, createTodo
+            loading,
+            error,
+            openModal,
+            todoItems,
+            setSearchValue,
+            amountAvailable,
+            amountCompleted,
+            availableTodos,
+            completedTodos,
+            createTodo,
+            setOpenModal
         }}>
             { children }
         </TodoContext.Provider>
